@@ -9,6 +9,7 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule} from '@angular/material/sort';
 import { MatSort } from '@angular/material/sort';
+import { PlayerStatsService } from '../player-stats';
 
 @Component({
   selector: 'app-home-page',
@@ -24,7 +25,8 @@ export class HomePage implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient, private statsService: PlayerStatsService) {}
 
   ngOnInit() {
      this.loadData();
@@ -42,9 +44,15 @@ export class HomePage implements OnInit {
       const sheetName = workbook.SheetNames[0];
       const worksheet = workbook.Sheets[sheetName];
       const jsonData = XLSX.utils.sheet_to_json<any>(worksheet, {raw: false});
-      
-      this.dataSource.data = jsonData;
-      this.displayedColumns = jsonData.length ? Object.keys(jsonData[0]) : [];
+
+      // removing undefined play outcomes
+      const filteredData = jsonData.filter(row => row['PLAY_OUTCOME'] !== 'Undefined');
+
+      const playerStats = this.statsService.calculateStatsByPlayer(filteredData);
+      console.log('playerStats', playerStats);
+      console.log('filteredData', filteredData);
+      this.dataSource.data = playerStats;
+      this.displayedColumns = filteredData.length ? Object.keys(playerStats[0]) : [];
     });
   
   }
