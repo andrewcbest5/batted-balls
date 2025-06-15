@@ -1,0 +1,13 @@
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.batter-search {
+  width: 300px;
+}
+
+.subtitle {
+  margin-top: 0.5em;
+}
