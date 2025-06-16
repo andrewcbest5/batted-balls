@@ -17,7 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home-page',
-  imports: [RouterModule, RouterLink, CommonModule, MatTableModule, MatPaginatorModule, MatSortModule, FormsModule,
+  imports: [RouterModule, CommonModule, MatTableModule, MatPaginatorModule, MatSortModule, FormsModule,
     MatSelectModule, NgxMatSelectSearchModule, ReactiveFormsModule
   ],
   templateUrl: './home-page.html',
@@ -56,6 +56,14 @@ export class HomePage implements OnInit {
       const sheetName = workbook.SheetNames[0];
       const worksheet = workbook.Sheets[sheetName];
       const jsonData = XLSX.utils.sheet_to_json<any>(worksheet, {raw: false});
+
+      // Convert BATTER names from "Last, First" to "First Last"
+      jsonData.forEach(row => {
+        if (row.BATTER && row.BATTER.includes(',')) {
+          const [last, first] = row.BATTER.split(',').map((s: string) => s.trim());
+          row.BATTER = `${first} ${last}`;
+        }
+      });
 
       // removing undefined play outcomes
       const filteredData = jsonData.filter(row => row['PLAY_OUTCOME'] !== 'Undefined');
