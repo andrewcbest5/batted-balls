@@ -3,12 +3,13 @@ import { ActivatedRoute } from '@angular/router';
 import { PlayerStatsService } from '../player-stats';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import * as ss from 'simple-statistics';
-import { MatSliderModule } from '@angular/material/slider';
+import { CommonModule } from '@angular/common';
+import * as d3 from 'd3';
 
 
 @Component({
   selector: 'app-player-profile',
-  imports: [ MatTableModule],
+  imports: [ MatTableModule, CommonModule],
   templateUrl: './player-profile.html',
   styleUrl: './player-profile.css'
 })
@@ -76,5 +77,15 @@ export class PlayerProfile {
     percentile: !isNaN(percentiles[key]) ? percentiles[key] : 'N/A'
   }));
 }
-  
+getPercentileColor(percentile: number | string): string {
+  if (percentile === 'N/A' || isNaN(Number(percentile))) {
+    return '#e0e0e0';
+  }
+  const p = Number(percentile) / 100;
+  // Interpolate directly between blue and red
+  const r = Math.round(25 + (211 - 25) * p);
+  const g = Math.round(118 + (47 - 118) * p);
+  const b = Math.round(210 + (47 - 210) * p);
+  return `rgb(${r},${g},${b})`;
+}
 }

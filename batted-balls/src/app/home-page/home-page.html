@@ -1,32 +1,31 @@
-<div class="header-bar">
-  <h1>MLB Batted Ball Data</h1>
-  <mat-form-field class="batter-search">
-    <mat-label>Search Batter</mat-label>
-    <mat-select
-      [formControl]="batterCtrl"
-      (selectionChange)="goToBatter($event.value)"
-    >
-      <ngx-mat-select-search
-        [formControl]="batterFilterCtrl"
-        placeholderLabel="Search..."
-        noEntriesFoundLabel="No batters found"
-      ></ngx-mat-select-search>
-      <mat-option *ngFor="let batter of filteredBatters" [value]="batter">
-        {{ batter }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+<div class="header-container">
+  <h1 class="main-title">2018 MLB Hitters</h1>
+  
+
+
+  <div class="centered-search">
+    <mat-form-field class="batter-search" appearance="outline" color="primary">
+      <mat-select
+        [formControl]="batterCtrl"
+        (selectionChange)="goToBatter($event.value)"
+        panelClass="custom-select-panel"
+      >
+        <mat-option value="" disabled selected hidden>
+          Search for a hitter
+        </mat-option>
+
+        <ngx-mat-select-search
+          [formControl]="batterFilterCtrl"
+          placeholderLabel="Search for a hitter"
+          noEntriesFoundLabel="No hitters found"
+        ></ngx-mat-select-search>
+
+        <mat-option *ngFor="let batter of filteredBatters" [value]="batter">
+          {{ batter }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
 </div>
 
-<h2 class="subtitle">Andrew Best</h2>
-
-<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-  <ng-container *ngFor="let col of displayedColumns" [matColumnDef]="col">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ col }}</th>
-    <td mat-cell *matCellDef="let row">{{ row[col] }}</td>
-  </ng-container>
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-
-<mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="10" showFirstLastButtons></mat-paginator>
+ <p class="subtitle">Search for a hitter in the search bar above. Data is from the first two weeks of the 2018 season. </p>

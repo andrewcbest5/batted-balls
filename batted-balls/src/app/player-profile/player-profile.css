@@ -1,42 +1,57 @@
-.player-name {
+/* .player-name {
   text-align: center;
   font-size: 2.2em;
   margin-top: 1.2em;
   margin-bottom: 0.5em;
   color: #1976d2;
   letter-spacing: 1px;
+} */
+
+.player-name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #1a1a1a;
 }
 
-.player-summary-table {
-  max-width: 500px;
-  margin: 2em auto;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(25, 118, 210, 0.08);
-  overflow: hidden;
-}
-
-.mat-table {
+.percentile-table {
   width: 100%;
-}
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fafafa;
 
-.mat-header-row, .mat-row {
-  height: 48px;
-}
+  th.mat-header-cell {
+    background-color: #2e2e2e;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 1rem;
+  }
 
-.mat-header-cell {
-  background: #1976d2;
-  color: #fff;
-  font-weight: 600;
-  font-size: 1.1em;
-  border-bottom: 2px solid #1565c0;
-}
+  td.mat-cell {
+    font-size: 0.95rem;
+    padding: 1rem;
+  }
 
-.mat-cell {
-  font-size: 1em;
-  border-bottom: 1px solid #e3e3e3;
-}
+  tr.mat-row:nth-child(even) {
+    background-color: #f3f3f3;
+  }
 
-.mat-row:nth-child(even) .mat-cell {
-  background: #f5f7fa;
+  tr.mat-row:nth-child(odd) {
+    background-color: #ffffff;
+  }
+
+  .percentile-badge {
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: inline-block;
+    min-width: 60px;
+    text-align: center;
+  }
 }

@@ -1,13 +1,33 @@
-.header-bar {
+.header-container {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+  background: linear-gradient(135deg, #0b1f3a, #123b63);
+  color: #fff;
+}
+
+.main-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.centered-search {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 500px;
 }
 
 .batter-search {
-  width: 300px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 8px;
 }
 
 .subtitle {
-  margin-top: 0.5em;
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 2rem;
+  color: #0b1f3a;
 }
