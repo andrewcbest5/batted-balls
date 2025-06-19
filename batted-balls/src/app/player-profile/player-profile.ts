@@ -20,18 +20,35 @@ export class PlayerProfile {
   displayedColumns: string[] = ['stat', 'value'];
   dataSource = new MatTableDataSource<any>([]);
   percentiles: any[] = [];
+  avg: any[] = [];
+
+  displayedBIPColumns = [
+  'GroundBallsPercentage',
+  'FlyBallsPercentage',
+  'LineDrivesPercentage',
+  'PopUpsPercentage',
+  'LeftPercentage',
+  'CenterPercentage',
+  'RightPercentage'
+];
+
+  displayedBIPColumns2 = [
+  'GroundBallsPercentage',
+  'GBleftPercentage',
+  'GBcenterPercentage',
+  'GBrightPercentage',
+  'airleftPercentage',
+  'aircenterPercentage',
+  'airrightPercentage',
+];
+  
   
 
   constructor(private route: ActivatedRoute, private statsService: PlayerStatsService) {
     this.route.paramMap.subscribe(params => {
       this.playerName = params.get('batter') || '';
       this.loadPlayerStats();
-      console.log('Player Name:', this.playerName);
-      console.log('Data Source:', this.dataSource.data);
-      console.log('All Stats:', this.allStats);
-      console.log('Player Stats:', this.playerStats);
       this.percentiles = this.getSummaryStatsTable()
-      console.log('Percentiles:', this.percentiles);
     });
   }
 
@@ -88,4 +105,7 @@ getPercentileColor(percentile: number | string): string {
   const b = Math.round(210 + (47 - 210) * p);
   return `rgb(${r},${g},${b})`;
 }
+
 }
+
+

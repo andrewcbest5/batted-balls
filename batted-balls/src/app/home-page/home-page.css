@@ -1,33 +1,35 @@
 .header-container {
-  text-align: center;
-  padding: 3rem 1rem 2rem;
-  background: linear-gradient(135deg, #0b1f3a, #123b63);
-  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ccc;
 }
 
 .main-title {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+  color: #2c3e50;
+  margin-bottom: 1rem;
 }
 
 .centered-search {
   display: flex;
   justify-content: center;
-  margin: 0 auto;
-  max-width: 500px;
-}
-
-.batter-search {
   width: 100%;
-  background-color: #fff;
-  border-radius: 8px;
+  max-width: 400px;
+  margin-bottom: 1rem;
 }
 
-.subtitle {
-  text-align: center;
-  font-size: 2rem;
-  margin-top: 2rem;
-  color: #0b1f3a;
+mat-form-field {
+  width: 100%;
+}
+
+.author{
+  display: flex;
+  justify-content: center;
+  margin-top: 6em;
+  font-size: 3em;
+  color: #007FAE;
 }

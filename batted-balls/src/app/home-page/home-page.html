@@ -1,31 +1,31 @@
 <div class="header-container">
-  <h1 class="main-title">2018 MLB Hitters</h1>
+  <h1 class="main-title">2018 MLB Hitter Report</h1>
   
 
 
   <div class="centered-search">
-    <mat-form-field class="batter-search" appearance="outline" color="primary">
-      <mat-select
-        [formControl]="batterCtrl"
-        (selectionChange)="goToBatter($event.value)"
-        panelClass="custom-select-panel"
-      >
-        <mat-option value="" disabled selected hidden>
-          Search for a hitter
-        </mat-option>
-
-        <ngx-mat-select-search
-          [formControl]="batterFilterCtrl"
-          placeholderLabel="Search for a hitter"
-          noEntriesFoundLabel="No hitters found"
-        ></ngx-mat-select-search>
-
-        <mat-option *ngFor="let batter of filteredBatters" [value]="batter">
-          {{ batter }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+<mat-form-field appearance="outline">
+  <mat-label>Search for a hitter</mat-label>
+  <mat-select
+    [formControl]="batterCtrl"
+    (selectionChange)="goToBatter($event.value)"
+    panelClass="custom-select-panel"
+  >
+    <mat-option>
+      <ngx-mat-select-search
+        [formControl]="batterFilterCtrl"
+        placeholderLabel="Search..."
+        noEntriesFoundLabel="No hitters found"
+      ></ngx-mat-select-search>
+    </mat-option>
+    <mat-option *ngFor="let batter of filteredBatters" [value]="batter">
+      {{ batter }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
   </div>
 </div>
 
- <p class="subtitle">Search for a hitter in the search bar above. Data is from the first two weeks of the 2018 season. </p>
+<h3 class = "author">
+  Andrew Best
+</h3>

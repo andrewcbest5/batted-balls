@@ -36,6 +36,39 @@ export class PlayerStatsService {
 
       const hardHit = rows.filter(r => Number(r.EXIT_SPEED) >= 95).length;
 
+      const groundBalls = rows.filter(r => r.LAUNCH_ANGLE <= 10).length;
+      const groundBallsPercentage = (groundBalls / battedBalls * 100).toFixed(2);
+
+      const lineDrives = rows.filter(r => r.LAUNCH_ANGLE > 10 && r.LAUNCH_ANGLE <= 25).length;
+      const lineDrivesPercentage = (lineDrives / battedBalls * 100).toFixed(2);
+
+      const flyBalls = rows.filter(r => r.LAUNCH_ANGLE > 25 && r.LAUNCH_ANGLE <= 50).length;
+      const flyBallsPercentage = (flyBalls / battedBalls * 100).toFixed(2);
+
+      const popUps = rows.filter(r => r.LAUNCH_ANGLE > 50).length;
+      const popUpsPercentage = (popUps / battedBalls * 100).toFixed(2);
+
+      const left = rows.filter(r => r.EXIT_DIRECTION <= -15).length;
+      const leftPercentage = (left / battedBalls * 100).toFixed(2);
+      const center = rows.filter(r => r.EXIT_DIRECTION > -15 && r.EXIT_DIRECTION <=15).length;
+      const centerPercentage = (center / battedBalls * 100).toFixed(2 );
+      const right = rows.filter(r => r.EXIT_DIRECTION > 15).length;
+      const rightPercentage = (right / battedBalls * 100).toFixed(2); 
+
+      const GBleft = rows.filter(r => r.EXIT_DIRECTION <= -15 && r.LAUNCH_ANGLE <= 10).length;
+      const GBleftPercentage = (GBleft / battedBalls * 100).toFixed(2);
+      const GBcenter = rows.filter(r => r.EXIT_DIRECTION > -15 && r.EXIT_DIRECTION <= 15 && r.LAUNCH_ANGLE <= 10).length;
+      const GBcenterPercentage = (GBcenter / battedBalls * 100).toFixed(2);
+      const GBright = rows.filter(r => r.EXIT_DIRECTION > 15 && r.LAUNCH_ANGLE <= 10).length;
+      const GBrightPercentage = (GBright / battedBalls * 100).toFixed(2);
+
+      const airleft = rows.filter(r => r.EXIT_DIRECTION <= -15 && r.LAUNCH_ANGLE > 10).length;
+      const airleftPercentage = (airleft / battedBalls * 100).toFixed(2);
+      const aircenter = rows.filter(r => r.EXIT_DIRECTION > -15 && r.EXIT_DIRECTION <= 15 && r.LAUNCH_ANGLE > 10).length;
+      const aircenterPercentage = (aircenter / battedBalls * 100).toFixed(2);
+      const airright = rows.filter(r => r.EXIT_DIRECTION > 15 && r.LAUNCH_ANGLE > 10).length;
+      const airrightPercentage = (airright / battedBalls * 100).toFixed(2);
+
       return {
         BATTER: batter,
         BATTER_ID: rows[0].BATTER_ID,
@@ -56,6 +89,26 @@ export class PlayerStatsService {
         SweetSpotRate: (sweetspot / battedBalls * 100).toFixed(2) ,
         HardHit: hardHit,
         HardHitRate: (hardHit / battedBalls * 100).toFixed(2) ,
+        GroundBalls: groundBalls,
+        GroundBallsPercentage: groundBallsPercentage,
+        LineDrives: lineDrives,
+        LineDrivesPercentage: lineDrivesPercentage,   
+        FlyBalls: flyBalls,
+        FlyBallsPercentage: flyBallsPercentage,
+        PopUps: popUps,
+        PopUpsPercentage: popUpsPercentage,
+        Left: left,
+        LeftPercentage: leftPercentage,
+        Center: center,  
+        CenterPercentage: centerPercentage,
+        Right: right,
+        RightPercentage: rightPercentage,
+        airleftPercentage: airleftPercentage,
+        aircenterPercentage: aircenterPercentage,
+        airrightPercentage: airrightPercentage, 
+        GBleftPercentage: GBleftPercentage,
+        GBcenterPercentage: GBcenterPercentage,
+        GBrightPercentage: GBrightPercentage,
       };
     });
 

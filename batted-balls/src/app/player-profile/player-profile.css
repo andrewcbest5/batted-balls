@@ -55,3 +55,20 @@
     text-align: center;
   }
 }
+
+.mat-column-GroundBallsPercentage,
+.mat-column-GBleftPercentage,
+.mat-column-GBcenterPercentage,
+.mat-column-GBrightPercentage,
+.mat-column-airleftPercentage,
+.mat-column-aircenterPercentage,
+.mat-column-airrightPercentage,
+.mat-column-GroundBallsPercentage,
+.mat-column-FlyBallsPercentage,
+.mat-column-LineDrivesPercentage,
+.mat-column-PopUpsPercentage,
+.mat-column-LeftPercentage,
+.mat-column-CenterPercentage,
+.mat-column-RightPercentage {
+  width: 110px;
+}
